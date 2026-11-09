@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>浮世千年 · 洪武仕途 — 微信小游戏试玩版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="logo">浮世千年 · 洪武仕途</div>
+    <div class="sub">洪武十一年 · 一纸任命 · 半生浮沉</div>
+  </header>
+
+  <!-- 首页 -->
+  <section id="screen-home" class="screen">
+    <div class="hero">
+      <div class="hero-title">洪武十一年</div>
+      <div class="hero-text">大明立国未久。你奉命出任一县知县，接手三百户、千余人的残破县城。从断案劝农，到结亲育子，从朝廷考课，到仕途沉浮——你留下的每一道政令，都可能影响数代人的命运。</div>
+      <div class="hero-tags">历史背景 + 沙盒经营 + 家族传承 · 可读档 · 长线可玩</div>
+    </div>
+    <div class="btn-col">
+      <button id="btn-continue" class="btn primary">继续游戏</button>
+      <button id="btn-new" class="btn">新开一局</button>
+      <button id="btn-load" class="btn">读档</button>
+    </div>
+    <div id="save-list" class="save-list"></div>
+    <div class="origin-picker" id="origin-picker" style="display:none">
+      <div class="origin-title">选出身（随机加成不同）</div>
+      <div id="origin-list" class="origin-list"></div>
+      <div class="origin-title">选天赋（三选一，借鉴旧版）</div>
+      <div id="talent-list" class="origin-list"></div>
+      <div class="btn-col"><button id="btn-start" class="btn primary">奉命上任 →</button></div>
+    </div>
+    <div class="panel"><h3>📜 规则透明（不用猜）</h3><p id="rules-text"></p><p class="note">三条风险线：政绩&lt;20 考课贬谪 · 贪墨风险≥80 被弹劾罢官 · 健康≤0 病逝 / 民心≤0 民变罢官。官库银两是公产，不可付私事；俸余才是个人钱。旧版要两次优秀才升知州，微信版为节奏改为一次优秀即升，考课仍三年一次。</p></div>
+    <p class="note">个人主体 · 纯广告变现（IAA）· 免费路永远能通关，看广告只是加速 · 不做算命/抽签/付费买装备</p>
+    <p class="note small">微信小游戏版结构在仓库根目录 game.json / game.js / project.config.json，AppID 留空，用户注册后填。</p>
+  </section>
+
+  <!-- 游戏 -->
+  <section id="screen-game" class="screen" style="display:none">
+    <div class="statusbar">
+      <div><span id="st-year"></span> · <span id="st-age"></span>岁 · 第<span id="st-gen"></span>代</div>
+      <div class="rank" id="st-rank"></div>
+    </div>
+    <div class="res-grid" id="res-grid"></div>
+    <div id="six-panel" class="panel" style="padding:10px 14px"></div>
+    <div id="risk-panel" class="panel" style="padding:10px 14px"></div>
+    <div id="timeline-panel" class="panel" style="padding:10px 14px"></div>
+    <div class="toolbar">
+      <button id="btn-save" class="btn small">💾 存档</button>
+      <button id="btn-equip" class="btn small">🎖️ 装备升级</button>
+      <button id="btn-ad" class="btn small gold">📺 看广告领奖励</button>
+      <button id="btn-home" class="btn small">🏠 回首页</button>
+    </div>
+    <div id="ad-box" class="ad-box" style="display:none">模拟广告播放中… <span id="ad-count">3</span> 秒后领奖励（微信版将接真实激励视频）</div>
+    <div id="equip-panel" class="panel" style="display:none"></div>
+    <div id="event-box" class="panel"></div>
+    <div class="log-title">县衙日志</div>
+    <div id="log-box" class="log"></div>
+  </section>
+
+  <!-- 结局 / 海报 -->
+  <section id="screen-end" class="screen" style="display:none">
+    <div class="hero"><div class="hero-title" id="end-title">结局</div><div class="hero-text" id="end-text"></div></div>
+    <canvas id="poster" width="720" height="960"></canvas>
+    <div class="btn-col">
+      <button id="btn-dl-poster" class="btn primary">下载海报图片</button>
+      <button id="btn-inherit" class="btn" style="display:none">由子嗣继承，继续玩 →</button>
+      <button id="btn-again" class="btn">再开一局</button>
+      <button id="btn-back-home" class="btn">回首页</button>
+    </div>
+    <p class="note">海报可下载发群、发朋友圈。微信版用分享卡片 / 保存图片。</p>
+  </section>
+</div>
+<script src="js/data.js"></script>
+<script src="js/save.js"></script>
+<script src="js/game.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
